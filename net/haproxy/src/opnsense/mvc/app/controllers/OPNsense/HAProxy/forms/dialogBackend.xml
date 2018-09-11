@@ -275,6 +275,13 @@
         <help><![CDATA[Don't use port on server, use the same port as frontend receive. If check enable, require port check in server.]]></help>
         <advanced>true</advanced>
     </field>
+        <field>
+        <id>backend.tuning_httpreuse</id>
+        <label>HTTP Reuse</label>
+        <type>dropdown</type>
+        <help><![CDATA[Declare how idle backend HTTP connections may be shared between requests.]]></help>
+        <advanced>true</advanced>
+    </field>
     <field>
         <label>Rules</label>
         <type>header</type>
