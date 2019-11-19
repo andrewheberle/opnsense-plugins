@@ -308,6 +308,7 @@
                     <OptionValues>
                         <http01>HTTP-01</http01>
                         <dns01>DNS-01</dns01>
+                        <tlsalpn01>TLS-ALPN-01</tlsalpn01>
                     </OptionValues>
                 </method>
                 <http_service type="OptionField">
@@ -353,6 +354,26 @@
                     <multiple>Y</multiple>
                     <Required>N</Required>
                 </http_haproxyFrontends>
+                <tlsalpn_haproxyInject type="BooleanField">
+                    <default>1</default>
+                    <Required>N</Required>
+                </tlsalpn_haproxyInject>
+                <tlsalpn_haproxyFrontends type="ModelRelationField">
+                    <Model>
+                        <frontends>
+                            <source>OPNsense.HAProxy.HAProxy</source>
+                            <items>frontends.frontend</items>
+                            <display>name</display>
+                            <filters>
+                                <mode>/^(ssl)$/</mode>
+                                <enabled>/^(?!0).*$/</enabled>
+                            </filters>
+                        </frontends>
+                    </Model>
+                    <ValidationMessage>Related HAProxy frontend not found</ValidationMessage>
+                    <multiple>Y</multiple>
+                    <Required>N</Required>
+                </tlsalpn_haproxyFrontends>
                 <dns_service type="OptionField">
                     <Required>Y</Required>
                     <default>dns_nsupdate</default>
