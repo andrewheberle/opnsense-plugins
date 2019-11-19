@@ -941,4 +941,28 @@
         <type>text</type>
         <help>Specify the custom ACME DNS Update URL, i.e. https://auth.acme-dns.io/update (optional)</help>
     </field>
+    <field>
+        <label>TLS-ALPN-01</label>
+        <type>header</type>
+        <style>method_table method_table_tlsalpn01</style>
+    </field>
+	<field>
+        <label>HAProxy</label>
+        <type>header</type>
+        <style>table_tlsalpn table_tlsalpn_haproxy</style>
+    </field>
+    <field>
+        <id>validation.tlsalpn_haproxyInject</id>
+        <label>Enable Auto-Configuration</label>
+        <type>checkbox</type>
+        <help>Automatically inject config into the local HAProxy instance to let it serve acme challanges without service interruption. Of course, adding the configuration requires a short restart of the HAProxy service.</help>
+    </field>
+    <field>
+        <id>validation.tlsalpn_haproxyFrontends</id>
+        <label>HAProxy Frontends</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help>Choose the local HAProxy frontends. They will automatically be configured to redirect acme challenges to the internal acme client. The HAProxy service will automatically be restarted if a certificate was renewed.</help>
+    </field>
 </form>
